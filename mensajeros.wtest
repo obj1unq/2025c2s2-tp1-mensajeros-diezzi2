@@ -1,0 +1,39 @@
+import mensajeros.*
+describe "Mensajeros" {
+  test "Test 1" {
+    paquete.estaPago(false)
+    paquete.mensajero(neo)
+    paquete.destino(matrix)
+
+    assert.that(not(paquete.puedeEntregarse()))
+  }
+}
+
+test "Test 2" {
+    paquete.estaPago(true)
+    paquete.mensajero(jeanGray)
+    paquete.destino(matrix)
+
+    assert.that(paquete.puedeEntregarse())
+}
+
+test "Test 3" {
+    paquete.estaPago(true)
+    paquete.mensajero(saraConnor)
+    saraConnor.peso(70)
+    saraConnor.vehiculo(camion)
+    camion.acoplados(1)
+    paquete.destino(brooklyn)
+
+    assert.that(not(paquete.puedeEntregarse()))
+}
+
+test "Test 4" {
+    paquete.estaPago(true)
+    paquete.mensajero(jeanGray)
+    saraConnor.peso(70)
+    saraConnor.vehiculo(moto)
+    paquete.destino(brooklyn)
+
+    assert.that(paquete.puedeEntregarse())
+}
