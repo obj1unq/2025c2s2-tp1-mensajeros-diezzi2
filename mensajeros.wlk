@@ -1,7 +1,7 @@
 object paquete {
-    var property estaPago  = null
-    var property mensajero = null
-    var property destino   = null
+    var property estaPago  = true
+    var property mensajero = neo
+    var property destino   = matrix
 
     method puedeEnviarse() = destino.puedePasar(mensajero)
 
