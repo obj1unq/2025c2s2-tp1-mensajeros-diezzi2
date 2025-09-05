@@ -5,7 +5,7 @@ describe "Mensajeros" {
     paquete.mensajero(neo)
     paquete.destino(matrix)
 
-    assert.that(not(paquete.puedeEntregarse()))
+    assert.notThat(paquete.puedeEntregarse())
   }
 }
 
@@ -25,7 +25,7 @@ test "Test 3" {
     camion.acoplados(1)
     paquete.destino(brooklyn)
 
-    assert.that(not(paquete.puedeEntregarse()))
+    assert.notThat(paquete.puedeEntregarse())
 }
 
 test "Test 4" {
