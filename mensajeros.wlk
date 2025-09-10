@@ -1,11 +1,13 @@
 object paquete {
-    var property estaPago  = true
-    var property mensajero = neo
-    var property destino   = matrix
+    var estaPago  = true
 
-    method puedeEnviarse() = destino.puedePasar(mensajero)
+    method puedeEntregarse(destino, mensajero) = estaPago and destino.puedePasar(mensajero)
 
-    method puedeEntregarse() = estaPago && self.puedeEnviarse()
+    // setter
+
+    method estaPago(_estaPago) {
+      estaPago = _estaPago
+    }
 }
 
 // DESTINOS
@@ -21,34 +23,75 @@ object matrix {
 // MENSAJEROS
 
 object jeanGray {
-    const property peso        = 65
-    const property puedeLlamar = true 
+    const peso        = 65
+    const puedeLlamar = true
+
+    // getters
+
+    method peso() = peso
+
+    method puedeLlamar() = puedeLlamar  
 }
 
 object neo {
-    const property peso  = 0
-    var property credito = true
+    const peso       = 0
+    var tieneCredito = true
 
-    method puedeLlamar() = credito
+    method puedeLlamar() = tieneCredito
+
+    // getter
+
+    method peso() = peso 
+
+    // setter
+
+    method tieneCredito(_tieneCredito) {
+      tieneCredito = _tieneCredito
+    }
 }
 
 object saraConnor {
-    var property peso          = 70
-    var property vehiculo      = moto
-    const property puedeLlamar = false
+    var peso          = 70
+    var vehiculo      = moto
+    const puedeLlamar = false
 
-    method peso() = peso + vehiculo.peso() 
+    method peso() = peso + vehiculo.peso()
+
+    // getters
+
+    method peso(_peso) {
+      peso = _peso
+    }
+
+    method puedeLlamar() = puedeLlamar 
+
+    // setter
+
+    method vehiculo(_vehiculo) {
+        vehiculo = _vehiculo
+    } 
 }
 
 // VEHICULOS
 
 object moto {
-    const property peso = 100 
+    const peso = 100
+
+    // getter
+
+    method peso() = peso  
 }
 
 object camion {
-    const property peso    = 500
-    var property acoplados = 1
+    const peso            = 500
+    const pesoPorAcoplado = 500 
+    var  cantAcoplados    = 1
 
-    method peso() = peso + acoplados * 500
+    method peso() = peso + cantAcoplados * pesoPorAcoplado
+
+    // setter
+
+    method cantAcoplados(_cantAcoplados) {
+      cantAcoplados = _cantAcoplados
+    }
 }

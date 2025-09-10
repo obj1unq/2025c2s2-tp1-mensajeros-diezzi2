@@ -1,39 +1,34 @@
 import mensajeros.*
-describe "Mensajeros" {
-  test "Test 1" {
+describe "Mensajeros - Casos de prueba con Neo y Jean Gray" {
+  test "Llevar un paquete no pago con Neo a la Matrix" {
     paquete.estaPago(false)
-    paquete.mensajero(neo)
-    paquete.destino(matrix)
 
-    assert.notThat(paquete.puedeEntregarse())
+    assert.notThat(paquete.puedeEntregarse(matrix, neo))
+  }
+  test "Llevar un paquete pago con Jean a la Matrix" {
+    paquete.estaPago(true)
+
+    assert.that(paquete.puedeEntregarse(matrix, jeanGray))
   }
 }
 
-test "Test 2" {
-    paquete.estaPago(true)
-    paquete.mensajero(jeanGray)
-    paquete.destino(matrix)
+describe "Mensajeros - Casos de prueba con Sarah Connor" {
 
-    assert.that(paquete.puedeEntregarse())
-}
-
-test "Test 3" {
+  method initialize() {
     paquete.estaPago(true)
-    paquete.mensajero(saraConnor)
     saraConnor.peso(70)
+  }
+
+  test "LLevar un paquete pago con Sarah en camión con un acoplado a Brooklyn" {
     saraConnor.vehiculo(camion)
-    camion.acoplados(1)
-    paquete.destino(brooklyn)
+    camion.cantAcoplados(1)
 
-    assert.notThat(paquete.puedeEntregarse())
-}
-
-test "Test 4" {
-    paquete.estaPago(true)
-    paquete.mensajero(jeanGray)
-    saraConnor.peso(70)
-    saraConnor.vehiculo(moto)
-    paquete.destino(brooklyn)
-
-    assert.that(paquete.puedeEntregarse())
+    assert.notThat(paquete.puedeEntregarse(brooklyn, saraConnor))
+  }
+  
+  test "Llevar un paquete pago con Sarah en moto a Brooklyn" {
+      saraConnor.vehiculo(moto)
+  
+      assert.that(paquete.puedeEntregarse(brooklyn, saraConnor))
+  }
 }
